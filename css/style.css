@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-size: cover;
+    color: #000;
+}
+img{    
+    border: none;
+    max-width: 100%;
+    vertical-align: middle;
+}
+.progress {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999999;
+    background: #f9f2e3 url(../img/bg.png);
+}
+.page{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+}
+.ta-col{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+.ta-col:first-child{
+    background: lightblue;
+}
+.ta-col:last-child{
+    background: pink;
+}
+.ta-col button{
+    background: white;
+}
+.female{
+    flex: 1;
+    background: url(../img/1.jpg) center no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+.female > div{
+    margin-top: 100%;
+}
+.female div img{
+    margin-top: 3%;
+}
+.female > div:last-child{
+    display: none;
+}
+.female > div:nth-of-type(3){
+    margin-top: 0;
+    width: 100%;
+    height: 100%;
+}
+.female > div:nth-of-type(3) video{
+    width: 750px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 1;
+    z-index: 2;
+    background: #000;
+}
+.dui{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    background: url(../img/dui.jpg) center no-repeat;
+    background-size: cover;
+}
+.dui img:first-child{
+    margin-top: 80%;
+}
