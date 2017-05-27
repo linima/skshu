@@ -32,7 +32,6 @@ var processor = {
     preload: function(){
         var _this = this;
         var manifest, preload;
-        // var queue = new createjs.LoadQueue(true);
         function setupManifest(){
             manifest = [
                 {
@@ -137,7 +136,6 @@ var processor = {
             var $target = $(target);
             var $bgvideo = $target.find('.bg-video');
             $target.addClass('active').children('.page:lt(2)').addClass('active');
-            setVideoPosition($bgvideo[0]);
             $bgvideo[0].play();
 
             //背景视频循环播放
@@ -153,18 +151,13 @@ var processor = {
         });
 
 
-        function setVideoPosition(el){
-            var offsetY = el.clientHeight - (el.clientWidth * el.videoHeight / el.videoWidth);
-            el.style["object-position"]= "0px " + offsetY + "px";
-        }
-
         $('[data-video]').on('click', function(){
             var $this = $(this);
             var $btnvideo = $this.parents('.section').find('.btn-video');
             var src = $this.data('video');
             $this.parents('.section').children('.videoarea').addClass('active').siblings('.page').removeClass('active');
-            $btnvideo.attr('src', 'media/'+src);
-            setVideoPosition($btnvideo[0]);
+            // $btnvideo.attr('src', 'media/'+src);
+            $btnvideo[0].src = 'media/' +src;
             $btnvideo[0].play();
 
             var text = $this.text();
