@@ -28,9 +28,9 @@ var processor = {
         var _this = this;
         _this.preload();
         _this.main();
-        _this.initMusic('media/bgm.mp3');
     },
     preload: function(){
+        var _this = this;
         var manifest, preload;
         // var queue = new createjs.LoadQueue(true);
         function setupManifest(){
@@ -110,9 +110,6 @@ var processor = {
         //处理单个文件加载
         function handleFileLoad(event) {
             console.log("文件类型: " + event.item.type);
-            if(event.item.id == "logo"){
-                console.log("logo图片已成功加载");
-            }
         }
 
         //已加载完毕进度 
@@ -128,84 +125,13 @@ var processor = {
             setTimeout(function(){
                 $('#loading').hide();
                 $('#home').addClass('active');
+                _this.initMusic('media/bgm.mp3');
             }, 500)
         }
         setupManifest();
         startPreload();
-        // console.log(Pace)
-        /*var images = [
-                'img/btns.png',
-                'img/common-bg.jpg',
-                'img/dazhao-txt.png',
-                'img/question.png',
-                'img/f-question.png',
-                'img/m-question.png',
-                'img/loading-logo.png',
-                'img/people-sprite.jpg',
-                'img/input-bg.png',
-                'img/f-reject.jpg',
-                'img/m-reject.jpg',
-                'img/prize1.png',
-                'img/prize2.png',
-                'img/prize3.png',
-                'img/reject-txt.png',
-                'img/score-title.png',
-                'img/share-txt.png',
-                'img/success-txt.png'
-            ],
-            videos = ['f1', 'f2', 'f3', 'm1', 'm2', 'm3'],
-            loader = new PxLoader();
-        var i, len, url;
-        for(i=0; i<images.length; i++){
-            var pxImage = new PxLoaderImage(images[i]);
-            pxImage.imageNumber = i+1;
-            loader.add(pxImage);
-        }
-        for(i=0, len=videos.length; i<len; i++){
-            url = 'media/'+ videos[i] +'mp4';
-
-        }
-        loader.addProgressListener(function(e){
-            $('#loading .colorlogo').css({
-                'height': e.completedCount+'%'
-            })
-            $('#loading .percent').text('LOADING '+e.completedCount+'%');
-            console.log(e.completedCount + '/' + e.totalCount);
-        })
-        loader.start();*/
     },
     main: function(){
-       /* $.imgpreloader({
-            paths: [
-                'img/btns.png',
-                'img/common-bg.jpg',
-                'img/dazhao-txt.png',
-                'img/question.png',
-                'img/f-question.png',
-                'img/m-question.png',
-                'img/loading-logo.png',
-                'img/people-sprite.jpg',
-                'img/input-bg.png',
-                'img/f-reject.jpg',
-                'img/m-reject.jpg',
-                'img/prize1.png',
-                'img/prize2.png',
-                'img/prize3.png',
-                'img/reject-txt.png',
-                'img/score-title.png',
-                'img/share-txt.png',
-                'img/success-txt.png'
-            ]
-        }).done(function($allImages){
-            $('#loading').hide();
-            $('#home').addClass('active');
-        }).progress(function($image, $allImages, $properImages, $brokenImages, isBroken, percentage){
-            $('#loading .colorlogo').css({
-                'height': percentage+'%'
-            })
-            $('#loading .percent').html('LOADING '+percentage+'%');
-        });*/
-
         $('#home .enter').on('click', function(){
             var target = $(this).data('target');
             var $target = $(target);
