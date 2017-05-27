@@ -12,15 +12,15 @@ body {
 }
 
 body {
-    background-size: cover;
-    color: #000;
+    color: #fff;
+    background: #090909;
 }
 img{    
     border: none;
     max-width: 100%;
     vertical-align: middle;
 }
-.progress {
+.loading {
     display: flex;
     display: -webkit-flex;
     flex-direction: column;
@@ -35,8 +35,28 @@ img{
     left: 0;
     right: 0;
     z-index: 9999999;
-    background: #f9f2e3 url(../img/bg.png);
+    background: #090909;
 }
+.loading .logo{
+    position: relative;
+    width: 144px;
+    height: 55px;
+    background: url(../img/loading-logo.png) no-repeat;
+}
+.loading .logo .colorlogo{
+    position: absolute;
+    width: 144px;
+    height: 55px;
+    bottom: 0;
+    background: url(../img/loading-logo.png) center bottom no-repeat;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+}
+.loading .percent{
+    margin-top: 20px;
+    font-size: 18px;
+}
+.section,
 .page{
     position: absolute;
     top: 0;
@@ -44,7 +64,149 @@ img{
     left: 0;
     right: 0;
     display: flex;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -99;
+    transition: all .6s;
 }
+
+.section.active,
+.female > .page.active,
+.male > .page.active{
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+.btn{
+    display: block;
+    margin-top: 25px;
+    text-indent: -9999px;
+    width: 440px;
+    height: 110px;
+    background: url(../img/btns.png) no-repeat;
+}
+.btn-peigemen{
+    background-position: 0 0;
+}
+.btn-piqibao{
+    background-position: 0 -110px;
+}
+.btn-heidong{
+    background-position: 0 -220px;
+}
+.btn-baobao{
+    background-position: 0 -330px;
+}
+.btn-xinku{
+    background-position: 0 -440px;
+}
+.btn-jixu{
+    background-position: 0 -550px;
+}
+.btn-heianliaoli{
+    background-position: 0 -660px;
+}
+.btn-zhizhaoher{
+    background-position: 0 -770px;
+}
+.btn-zhizhaohe{
+    background-position: 0 -880px;
+}
+.btn-dazhao{
+    background-position: 0 -990px;
+}
+.btn-songfen{
+    background-position: 0 -1100px;
+}
+.flex-end{
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 18%;
+}
+
+.home{
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.home .people{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #000 url(../img/people-sprite.jpg) no-repeat;
+}
+.home .question{
+    position: relative;
+    z-index: 2;
+    width: 750px;
+    height: 317px;
+    background: url(../img/question.png) no-repeat;
+}
+.home .enter-btns{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+.home .enter-btns .enter{
+    margin: 0 30px;
+    display: block;
+    text-indent: -9999px;
+    width: 273px;
+    height: 110px;
+    background: url(../img/enter-btn.png) no-repeat;
+}
+.home .enter-btns .enter:last-child{
+    background-position: 0 -110px;
+}
+.bgvideo{
+    align-items: flex-end;
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+}
+.bg-video,
+.btn-video{
+    position: absolute;
+    bottom: 0;
+    width: 750px;
+    height: 1220px;
+}
+
+.f-question{
+    width: 624px;
+    height: 252px;
+    background: url(../img/f-question.png) no-repeat;
+}
+.m-question{
+    width: 675px;
+    height: 224px;
+    background: url(../img/m-question.png) no-repeat;
+}
+
+.videoarea{
+    background: #000;
+}
+
+.female .reject{
+    background: url(../img/m-reject.jpg) center no-repeat;
+    background-size: cover;
+}
+.male .reject{
+    background: url(../img/f-reject.jpg) center no-repeat;
+    background-size: cover;
+}
+.reject .txt{
+    width: 582px;
+    height: 223px;
+    background: url(../img/reject-txt.png) no-repeat;
+}
+
+
+
 .ta-col{
     display: flex;
     align-items: center;
@@ -60,7 +222,38 @@ img{
 .ta-col button{
     background: white;
 }
-.female{
+
+.dazhao{
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: url(../img/common-bg.jpg) center bottom no-repeat;
+    background-size: cover;
+}
+.dazhao .txt{
+    margin-top: 10%;
+    margin-bottom: 35px;
+    width: 596px;
+    height: 632px;
+    background: url(../img/dazhao-txt.png) no-repeat;
+}
+
+.audio{
+    display: none;
+    position: absolute;
+    z-index: 200;
+    right: 20px;
+    top: 20px;
+    width: 52px;
+    height: 52px;
+    background-image: url(../img/audio.png);
+    background-position: -52px 0;
+}
+.audio.on{
+    background-position: 0 0;
+    animation: rotate 1.5s linear infinite;
+}
+/* .female{
     flex: 1;
     background: url(../img/1.jpg) center no-repeat;
     background-size: cover;
@@ -102,4 +295,87 @@ img{
 }
 .dui img:first-child{
     margin-top: 80%;
+} */
+
+/* animation settings */
+.active > .f-question,
+.active > .m-question,
+.active > .txt{
+    animation: bounceIn 1s both;
+}
+.active > .btn{
+    animation: fadeInUp 1s both;
+}
+.active > .btn:nth-of-type(1){
+    animation-delay: 0;
+}
+.active > .btn:nth-of-type(2){
+    animation-delay: .3s;
+}
+.active > .btn:nth-of-type(3){
+    animation-delay: .6s;
+}
+.active > .btn:nth-of-type(4){
+    animation-delay: .9s;
+}
+.home .people{
+    animation: people 3s steps(15) infinite;
+}
+
+/* animation keyframes */
+@keyframes bounceIn {
+    from, 20%, 40%, 60%, 80%, to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    0% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+        transform: scale3d(.9, .9, .9);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+        transform: scale3d(.97, .97, .97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+        transform-origin: center;
+    }
+    to {
+        transform: rotate(360deg);
+        transform-origin: center;
+    }
+}
+@keyframes people{
+    100%{ background-position: -11250px 0; }
 }

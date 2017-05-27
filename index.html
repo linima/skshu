@@ -15,50 +15,83 @@
 </head>
 
 <body>
-    <!-- <div class="page">
-        <div class="ta-col"><button>看看他</button></div>
-        <div class="ta-col"><button>看看她</button></div>
-    </div> -->
-    <div class="page">
-        <div class="female">
-            <div>
-                <img src="img/f-scene.png" alt="">
-                <img src="img/给她支招.png" alt="" id="f-btn">
-            </div>
-            <div>
-                <img src="img/人家还是宝宝.png" alt="">
-                <img src="img/网络信号黑洞.png" alt="" id="xinhaoPlay">
-                <img src="img/极品黑暗料理.png" alt="">
-            </div>
-            <div>
-                <video src="media/4.mp4" webkit-playsinline="true" playsinline x5-video-player-type="h5" id="xinhaoVideo"></video>
-                <div class="dui">
-                    <img src="img/dui-text.png" alt="">
-                    <img src="img/人家还是宝宝.png" alt="">
-                    <img src="img/网络信号黑洞.png" alt="">
-                    <img src="img/放大招.png" alt="">
-                </div>
-            </div>
+    <div class="loading" id="loading">
+        <div class="logo">
+            <div class="colorlogo" style="height: 0;"></div>
+        </div>
+        <div class="percent">LOADING 0%</div>
+    </div>
+    <div class="section home" id="home">
+        <div class="people"></div>
+        <div class="question"></div>
+        <div class="enter-btns">
+            <a class="enter" data-target="#male">看看他</a>
+            <a class="enter" data-target="#female">看看她</a>
         </div>
     </div>
-    <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+    <div class="section female" id="female">
+        <div class="page bgvideo">
+            <video class="bg-video" src="media/f-bg.mp4" preload="auto" webkit-playsinline="true" playsinline x5-video-player-type="h5"></video>
+        </div>
+        <div class="page flex-end">
+            <div class="f-question"></div>
+            <a class="btn btn-zhizhaoher" data-role="zhizhao">给她支招</a>
+        </div>
+        <div class="page flex-end method">
+            <a class="btn btn-baobao" data-video="f1.mp4">人家还是宝宝</a>
+            <a class="btn btn-heidong" data-video="f2.mp4">网络信号黑洞</a>
+            <a class="btn btn-heianliaoli" data-video="f3.mp4">极品黑暗料理</a>
+        </div>
+        <div class="page flex-end videoarea">
+            <video class="btn-video" webkit-playsinline="true" playsinline x5-video-player-type="h5"></video>
+        </div>
+        <div class="page flex-end reject">
+            <div class="txt"></div>
+            <a class="btn btn-baobao" data-video="f1.mp4">人家还是宝宝</a>
+            <a class="btn btn-heidong" data-video="f2.mp4">网络信号黑洞</a>
+            <a class="btn btn-heianliaoli" data-video="f3.mp4">极品黑暗料理</a>
+            <a class="btn btn-dazhao">放大招</a>
+        </div>
+    </div>
+    <div class="section male" id="male">
+        <div class="page bgvideo">
+            <video class="bg-video" src="media/m-bg.mp4" preload="auto" webkit-playsinline="true" playsinline x5-video-player-type="h5"></video>
+        </div>
+        <div class="page flex-end">
+            <div class="m-question"></div>
+            <a class="btn btn-zhizhaohe" data-role="zhizhao">给他支招</a>
+        </div>
+        <div class="page flex-end method">
+            <a class="btn btn-piqibao" data-video="m1.mp4">我爸脾气暴</a>
+            <a class="btn btn-peigemen" data-video="m2.mp4">我要陪哥们</a>
+            <a class="btn btn-xinku" data-video="m3.mp4">加班太辛苦</a>
+        </div>
+        <div class="page flex-end videoarea">
+            <video class="btn-video" webkit-playsinline="true" playsinline x5-video-player-type="h5"></video>
+        </div>
+        <div class="page flex-end reject">
+            <div class="txt"></div>
+            <a class="btn btn-piqibao" data-video="m1.mp4">我爸脾气暴</a>
+            <a class="btn btn-peigemen" data-video="m2.mp4">我要陪哥们</a>
+            <a class="btn btn-xinku" data-video="m3.mp4">加班太辛苦</a>
+            <a class="btn btn-dazhao">放大招</a>
+        </div>
+    </div>
+    <div class="section dazhao" id="dazhao">
+        <div class="txt"></div>
+        <a class="btn btn-songfen" href="lottery.html">点我送分</a>
+        <a class="btn btn-jixu">继续支招</a>
+    </div>
+    <div class="audio" id="music"></div>
+    <div style="display: none;">
+        <video src="media/f1.mp4" preload="auto"></video>
+        <video src="media/f2.mp4" preload="auto"></video>
+        <video src="media/f3.mp4" preload="auto"></video>
+        <video src="media/m1.mp4" preload="auto"></video>
+        <video src="media/m2.mp4" preload="auto"></video>
+        <video src="media/m3.mp4" preload="auto"></video>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.imgpreloader.js"></script>
     <script src="js/app.js"></script>
-    <script>
-        $(function(){
-            $('#f-btn').on('click', function(){
-                $(this).parent().hide().next().show();
-            })
-
-            $('#xinhaoPlay').on('click', function(){
-                // console.log($('#xinhaoVideo'))\
-                $(this).parent().hide().next().show();
-                $('#xinhaoVideo')[0].play();
-            })
-
-            $('#xinhaoVideo').on('ended', function(){
-                console.log('end');
-                $(this).remove();
-            })
-        })
-    </script>
 </html>
