@@ -26,11 +26,156 @@ var processor = {
     },
     init: function(){
         var _this = this;
+        _this.preload();
         _this.main();
         _this.initMusic('media/bgm.mp3');
     },
+    preload: function(){
+        var manifest, preload;
+        // var queue = new createjs.LoadQueue(true);
+        function setupManifest(){
+            manifest = [
+                {
+                    src: 'img/loading-logo.png',
+                    id: 'loadinglogo'
+                },{
+                    src: 'img/btns.png',
+                    id: 'btns'
+                },{
+                    src: 'img/common-bg.jpg',
+                    id: 'commonbg'
+                },{
+                    src: 'img/dazhao-txt.png',
+                    id: 'dazhaotxt'
+                },{
+                    src: 'img/question.png',
+                    id: 'question'
+                },{
+                    src: 'img/f-question.png',
+                    id: 'fquestion'
+                },{
+                    src: 'img/m-question.png',
+                    id: 'mquestion'
+                },{
+                    src: 'img/people-sprite.jpg',
+                    id: 'peoplesprite'
+                },{
+                    src: 'img/f-reject.jpg',
+                    id: 'freject'
+                },{
+                    src: 'img/m-reject.jpg',
+                    id: 'mreject'
+                },{
+                    src: 'img/reject-txt.png',
+                    id: 'rejecttxt'
+                },{
+                    src: 'media/f1.mp4',
+                    id: 'f1'
+                },{
+                    src: 'media/f2.mp4',
+                    id: 'f2'
+                },{
+                    src: 'media/f3.mp4',
+                    id: 'f3'
+                },{
+                    src: 'media/m1.mp4',
+                    id: 'm1'
+                },{
+                    src: 'media/m2.mp4',
+                    id: 'm2'
+                },{
+                    src: 'media/m3.mp4',
+                    id: 'm3'
+                },{
+                    src: 'media/f-bg.mp4',
+                    id: 'fbg'
+                },{
+                    src: 'media/m-bg.mp4',
+                    id: 'mbg'
+                }
+            ]
+        }
+        //开始预加载
+        function startPreload() {
+            preload = new createjs.LoadQueue(true);
+            //注意加载音频文件需要调用如下代码行
+            preload.installPlugin(createjs.Sound);         
+            preload.on("fileload", handleFileLoad);
+            preload.on("progress", handleFileProgress);
+            preload.on("complete", loadComplete);
+            preload.loadManifest(manifest);
+
+        }
+
+        //处理单个文件加载
+        function handleFileLoad(event) {
+            console.log("文件类型: " + event.item.type);
+            if(event.item.id == "logo"){
+                console.log("logo图片已成功加载");
+            }
+        }
+
+        //已加载完毕进度 
+        function handleFileProgress(event) {
+            $('#loading .colorlogo').css({
+                'height': (preload.progress*100|0)+'%'
+            })
+            $('#loading .percent').html('LOADING '+(preload.progress*100|0)+'%');
+        }
+
+        //全度资源加载完毕
+        function loadComplete(event) {
+            setTimeout(function(){
+                $('#loading').hide();
+                $('#home').addClass('active');
+            }, 500)
+        }
+        setupManifest();
+        startPreload();
+        // console.log(Pace)
+        /*var images = [
+                'img/btns.png',
+                'img/common-bg.jpg',
+                'img/dazhao-txt.png',
+                'img/question.png',
+                'img/f-question.png',
+                'img/m-question.png',
+                'img/loading-logo.png',
+                'img/people-sprite.jpg',
+                'img/input-bg.png',
+                'img/f-reject.jpg',
+                'img/m-reject.jpg',
+                'img/prize1.png',
+                'img/prize2.png',
+                'img/prize3.png',
+                'img/reject-txt.png',
+                'img/score-title.png',
+                'img/share-txt.png',
+                'img/success-txt.png'
+            ],
+            videos = ['f1', 'f2', 'f3', 'm1', 'm2', 'm3'],
+            loader = new PxLoader();
+        var i, len, url;
+        for(i=0; i<images.length; i++){
+            var pxImage = new PxLoaderImage(images[i]);
+            pxImage.imageNumber = i+1;
+            loader.add(pxImage);
+        }
+        for(i=0, len=videos.length; i<len; i++){
+            url = 'media/'+ videos[i] +'mp4';
+
+        }
+        loader.addProgressListener(function(e){
+            $('#loading .colorlogo').css({
+                'height': e.completedCount+'%'
+            })
+            $('#loading .percent').text('LOADING '+e.completedCount+'%');
+            console.log(e.completedCount + '/' + e.totalCount);
+        })
+        loader.start();*/
+    },
     main: function(){
-        $.imgpreloader({
+       /* $.imgpreloader({
             paths: [
                 'img/btns.png',
                 'img/common-bg.jpg',
@@ -59,7 +204,7 @@ var processor = {
                 'height': percentage+'%'
             })
             $('#loading .percent').html('LOADING '+percentage+'%');
-        });
+        });*/
 
         $('#home .enter').on('click', function(){
             var target = $(this).data('target');
