@@ -155,10 +155,13 @@ var processor = {
             var $this = $(this);
             var $btnvideo = $this.parents('.section').find('.btn-video');
             var src = $this.data('video');
+            var $thisBgvideo = $this.parents('.section').find('.bg-video');
             $this.parents('.section').children('.videoarea').addClass('active').siblings('.page').removeClass('active');
             // $btnvideo.attr('src', 'media/'+src);
             $btnvideo[0].src = 'media/' +src;
+            $btnvideo[0].poster = 'img/f-reject.jpg';
             $btnvideo[0].play();
+            $thisBgvideo[0].pause();
 
             var text = $this.text();
             var $reject = $this.parents('.section').children('.reject');

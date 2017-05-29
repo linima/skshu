@@ -44,13 +44,13 @@ img{
     z-index: 2;
 }
 .draw .title{
-    margin-top: 10%;
+    margin-top: 5%;
     width: 679px;
     height: 281px;
     background: url(../img/lottery-txt.png) no-repeat;
 }
 .draw .rotate{
-    margin-top: 7%;
+    margin-top: 5%;
     position: relative;
     width: 656px;
     height: 672px;
@@ -74,7 +74,7 @@ img{
     text-align: center;
 }
 .score .title{
-    margin-top: 5%;
+    margin-top: 2%;
     margin-bottom: 2%;
     background: url(../img/score-title.png) no-repeat;
 }
@@ -90,8 +90,8 @@ img{
 }
 .score-third .title{
     margin-top: 25%;
-    width: 571px;
-    height: 147px;
+    width: 584px;
+    height: 132px;
     background-position: 0 0;
 }
 .score .caption{
@@ -144,7 +144,7 @@ img{
     background-position: 0 0;
 }
 .score .btns .share{
-    background-position: 0 -110px;
+    background-position: 0 -120px;
 }
 
 .success{
@@ -165,7 +165,7 @@ img{
     border: none;
     text-indent: -9999px;
     outline: none;
-    background: url(../img/lottery-btns.png) 0 -110px no-repeat;
+    background: url(../img/lottery-btns.png) 0 -120px no-repeat;
 }
 .popshare{
     background: rgba(0,0,0,.9) url(../img/share-txt.png) 90% 5%  no-repeat;

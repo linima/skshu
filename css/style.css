@@ -223,8 +223,8 @@ img{
     background-size: cover;
 }
 .dazhao .txt{
-    margin-top: 10%;
-    margin-bottom: 35px;
+    margin-top: 8%;
+    margin-bottom: 30px;
     width: 596px;
     height: 632px;
     background: url(../img/dazhao-txt.png) no-repeat;
@@ -236,10 +236,10 @@ img{
     z-index: 200;
     right: 20px;
     top: 20px;
-    width: 52px;
-    height: 52px;
+    width: 43px;
+    height: 43px;
     background-image: url(../img/audio.png);
-    background-position: -52px 0;
+    background-position: -43px 0;
 }
 .audio.on{
     background-position: 0 0;
@@ -247,31 +247,33 @@ img{
 }
 
 /* animation settings */
+.active .question,
 .active > .f-question,
 .active > .m-question,
 .active > .txt{
-    animation: bounceIn 1s both;
-    -webkit-animation: bounceIn 1s both;
+    animation: bounceIn 1s 1s both;
+    -webkit-animation: bounceIn 1s 1s both;
 }
-.active > .btn{
-    animation: fadeInUp 1s both;
-    -webkit-animation: fadeInUp 1s both;
+.active > .btn,
+.active > .enter-btns{
+    animation: fadeInUp 1s 1.5s both;
+    -webkit-animation: fadeInUp 1s 1.5s both;
 }
 .active > .btn:nth-of-type(1){
-    animation-delay: 0;
-    -webkit-animation-delay: 0;
+    animation-delay: 1s;
+    -webkit-animation-delay: 1s;
 }
 .active > .btn:nth-of-type(2){
-    animation-delay: .3s;
-    -webkit-animation-delay: .3s;
+    animation-delay: 1.3s;
+    -webkit-animation-delay: 1.3s;
 }
 .active > .btn:nth-of-type(3){
-    animation-delay: .6s;
-    -webkit-animation-delay: .6s;
+    animation-delay: 1.6s;
+    -webkit-animation-delay: 1.6s;
 }
 .active > .btn:nth-of-type(4){
-    animation-delay: .9s;
-    -webkit-animation-delay: .9s;
+    animation-delay: 1.9s;
+    -webkit-animation-delay: 1.9s;
 }
 .home .people{
     animation: people 3s steps(15) infinite;
