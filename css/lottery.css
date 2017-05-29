@@ -78,6 +78,11 @@ img{
     margin-bottom: 2%;
     background: url(../img/score-title.png) no-repeat;
 }
+.score-first,
+.score-second{
+    transform: scale(.85) ;
+    -webkit-transform: scale(.85) ;
+}
 .score-first .title{
     width: 508px;
     height: 132px;
