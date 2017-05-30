@@ -25,55 +25,26 @@
         <div class="people"></div>
         <div class="question"></div>
         <div class="enter-btns">
-            <a class="enter" data-target="#male">看看他</a>
-            <a class="enter" data-target="#female">看看她</a>
+            <a class="enter" data-target="male" data-bgvideo="m-bg.mp4" data-poster="m-bg.jpg">看看他</a>
+            <a class="enter" data-target="female" data-bgvideo="f-bg.mp4" data-poster="f-bg.jpg">看看她</a>
         </div>
     </div>
-    <div class="section female" id="female">
+    <div class="section" id="sex">
         <div class="page bgvideo">
-            <video class="bg-video" src="media/f-bg.mp4" preload="auto" webkit-playsinline="true" playsinline x5-video-player-type="h5"></video>
+            <video class="bg-video" preload="auto" webkit-playsinline="true" playsinline x5-video-player-type="h5"></video>
         </div>
         <div class="page flex-end">
-            <div class="f-question"></div>
-            <a class="btn btn-zhizhaoher" data-role="zhizhao">给她支招</a>
+            <div class="question"></div>
+            <a class="btn btn-zhizhao">给TA支招</a>
         </div>
         <div class="page flex-end method">
-            <a class="btn btn-baobao" data-video="f1.mp4">人家还是宝宝</a>
-            <a class="btn btn-heidong" data-video="f2.mp4">网络信号黑洞</a>
-            <a class="btn btn-heianliaoli" data-video="f3.mp4">极品黑暗料理</a>
+            <a class="btn" data-video="">招数内容</a>
         </div>
         <div class="page videoarea">
             <video class="btn-video" webkit-playsinline="true" playsinline x5-video-player-type="h5"></video>
         </div>
         <div class="page flex-end reject">
             <div class="txt"></div>
-            <a class="btn btn-baobao" data-video="f1.mp4">人家还是宝宝</a>
-            <a class="btn btn-heidong" data-video="f2.mp4">网络信号黑洞</a>
-            <a class="btn btn-heianliaoli" data-video="f3.mp4">极品黑暗料理</a>
-            <a class="btn btn-dazhao">放大招</a>
-        </div>
-    </div>
-    <div class="section male" id="male">
-        <div class="page bgvideo">
-            <video class="bg-video" src="media/m-bg.mp4" preload="auto" webkit-playsinline="true" playsinline x5-video-player-type="h5"></video>
-        </div>
-        <div class="page flex-end">
-            <div class="m-question"></div>
-            <a class="btn btn-zhizhaohe" data-role="zhizhao">给他支招</a>
-        </div>
-        <div class="page flex-end method">
-            <a class="btn btn-piqibao" data-video="m1.mp4">我爸脾气暴</a>
-            <a class="btn btn-peigemen" data-video="m2.mp4">我要陪哥们</a>
-            <a class="btn btn-xinku" data-video="m3.mp4">加班太辛苦</a>
-        </div>
-        <div class="page videoarea">
-            <video class="btn-video" webkit-playsinline="true" playsinline x5-video-player-type="h5"></video>
-        </div>
-        <div class="page flex-end reject">
-            <div class="txt"></div>
-            <a class="btn btn-piqibao" data-video="m1.mp4">我爸脾气暴</a>
-            <a class="btn btn-peigemen" data-video="m2.mp4">我要陪哥们</a>
-            <a class="btn btn-xinku" data-video="m3.mp4">加班太辛苦</a>
             <a class="btn btn-dazhao">放大招</a>
         </div>
     </div>
@@ -83,15 +54,7 @@
         <a class="btn btn-jixu">继续支招</a>
     </div>
     <div class="audio" id="music"></div>
-    <!-- <div style="display: none;">
-        <video src="media/f1.mp4" preload="auto"></video>
-        <video src="media/f2.mp4" preload="auto"></video>
-        <video src="media/f3.mp4" preload="auto"></video>
-        <video src="media/m1.mp4" preload="auto"></video>
-        <video src="media/m2.mp4" preload="auto"></video>
-        <video src="media/m3.mp4" preload="auto"></video>
-    </div> -->
     <script src="js/jquery.min.js"></script>
-    <script src="https://code.createjs.com/preloadjs-0.6.2.min.js"></script>
+    <script src="js/jquery.imgpreloader.js"></script>
     <script src="js/app.js"></script>
 </html>

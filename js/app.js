@@ -26,117 +26,73 @@ var processor = {
     },
     init: function(){
         var _this = this;
-        _this.preload();
+        _this.preloader();
         _this.main();
     },
-    preload: function(){
+    preloader: function(){
         var _this = this;
-        var manifest, preload;
-        function setupManifest(){
-            manifest = [
-                {
-                    src: 'img/loading-logo.png',
-                    id: 'loadinglogo'
-                },{
-                    src: 'img/btns.png',
-                    id: 'btns'
-                },{
-                    src: 'img/common-bg.jpg',
-                    id: 'commonbg'
-                },{
-                    src: 'img/dazhao-txt.png',
-                    id: 'dazhaotxt'
-                },{
-                    src: 'img/question.png',
-                    id: 'question'
-                },{
-                    src: 'img/f-question.png',
-                    id: 'fquestion'
-                },{
-                    src: 'img/m-question.png',
-                    id: 'mquestion'
-                },{
-                    src: 'img/people-sprite.jpg',
-                    id: 'peoplesprite'
-                },{
-                    src: 'img/f-reject.jpg',
-                    id: 'freject'
-                },{
-                    src: 'img/m-reject.jpg',
-                    id: 'mreject'
-                },{
-                    src: 'img/reject-txt.png',
-                    id: 'rejecttxt'
-                },{
-                    src: 'media/f1.mp4',
-                    id: 'f1'
-                },{
-                    src: 'media/f2.mp4',
-                    id: 'f2'
-                },{
-                    src: 'media/f3.mp4',
-                    id: 'f3'
-                },{
-                    src: 'media/m1.mp4',
-                    id: 'm1'
-                },{
-                    src: 'media/m2.mp4',
-                    id: 'm2'
-                },{
-                    src: 'media/m3.mp4',
-                    id: 'm3'
-                },{
-                    src: 'media/f-bg.mp4',
-                    id: 'fbg'
-                },{
-                    src: 'media/m-bg.mp4',
-                    id: 'mbg'
-                }
+        $.imgpreloader({
+            paths: [
+                'img/loading-logo.png',
+                'img/btns.png',
+                'img/common-bg.jpg',
+                'img/dazhao-txt.png',
+                'img/question.png',
+                'img/f-question.png',
+                'img/m-question.png',
+                'img/people-sprite.jpg',
+                'img/f-reject.jpg',
+                'img/m-reject.jpg',
+                'img/reject-txt.png',
+                'img/f-bg.jpg',
+                'img/m-bg.jpg',
+                'img/f1.jpg',
+                'img/f2.jpg',
+                'img/f3.jpg',
+                'img/m1.jpg',
+                'img/m2.jpg',
+                'img/m3.jpg'
             ]
-        }
-        //开始预加载
-        function startPreload() {
-            preload = new createjs.LoadQueue(true);
-            //注意加载音频文件需要调用如下代码行
-            preload.installPlugin(createjs.Sound);         
-            preload.on("fileload", handleFileLoad);
-            preload.on("progress", handleFileProgress);
-            preload.on("complete", loadComplete);
-            preload.loadManifest(manifest);
-
-        }
-
-        //处理单个文件加载
-        function handleFileLoad(event) {
-            console.log("文件类型: " + event.item.type);
-        }
-
-        //已加载完毕进度 
-        function handleFileProgress(event) {
-            $('#loading .colorlogo').css({
-                'height': (preload.progress*100|0)+'%'
-            })
-            $('#loading .percent').html('LOADING '+(preload.progress*100|0)+'%');
-        }
-
-        //全度资源加载完毕
-        function loadComplete(event) {
+        }).always(function($allImages, $properImages, $brokenImages){
             setTimeout(function(){
                 $('#loading').hide();
                 $('#home').addClass('active');
                 _this.initMusic('media/bgm.mp3');
-            }, 500)
-        }
-        setupManifest();
-        startPreload();
+            }, 500);
+        }).progress(function($image, $allImages, $properImages, $brokenImages, isBroken, percentage){
+            $('#loading .colorlogo').css({
+                'height': percentage+'%'
+            })
+            $('#loading .percent').html('LOADING '+percentage+'%');
+        })
     },
     main: function(){
+        var femaleHTML = '<a class="btn btn-baobao" data-video="f1.mp4" data-poster="f1.jpg">人家还是宝宝</a>'+
+                       '<a class="btn btn-heidong" data-video="f2.mp4" data-poster="f2.jpg">网络信号黑洞</a>'+
+                       '<a class="btn btn-heianliaoli" data-video="f3.mp4" data-poster="f3.jpg">极品黑暗料理</a>';
+
+        var maleHTML = '<a class="btn btn-piqibao" data-video="m1.mp4" data-poster="m1.jpg">我爸脾气暴</a>'+
+                       '<a class="btn btn-peigemen" data-video="m2.mp4" data-poster="m2.jpg">我要陪哥们</a>'+
+                       '<a class="btn btn-xinku" data-video="m3.mp4" data-poster="m3.jpg">加班太辛苦</a>';
+        var $sex = $('#sex'),
+            $zhizhaoBtn = $sex.find('.btn-zhizhao'),
+            $method = $sex.children('.method'),
+            $reject = $sex.children('.reject'),
+            $videoarea = $sex.children('.videoarea'),
+            $bgvideo = $sex.find('.bg-video'),
+            $btnvideo = $sex.find('.btn-video'),
+            $dazhao = $sex.find('.btn-dazhao'),
+            sex = '';
+
         $('#home .enter').on('click', function(){
-            var target = $(this).data('target');
-            var $target = $(target);
-            var $bgvideo = $target.find('.bg-video');
-            $target.addClass('active').children('.page:lt(2)').addClass('active');
+            sex = $(this).data('target');
+            var bgvideo = $(this).data('bgvideo');
+            var bgposter = $(this).data('poster');
+            $bgvideo[0].src = 'media/'+bgvideo;
+            $bgvideo[0].poster = 'img/'+bgposter;
             $bgvideo[0].play();
+            $sex.addClass(sex);
+            $sex.addClass('active').children('.page:lt(2)').addClass('active');
 
             //背景视频循环播放
             $bgvideo.on('ended', function(){
@@ -146,25 +102,34 @@ var processor = {
         });
 
         //给Ta支招
-        $('[data-role=zhizhao]').on('click', function(){
-            $(this).parent().removeClass('active').next().addClass('active');
+        $zhizhaoBtn.on('click', function(){
+            $(this).parent().removeClass('active');
+            var btnsHTML = '';
+            if(sex == 'male'){
+                $method.html(maleHTML);
+                $reject.find('.txt').after(maleHTML);
+            }else{
+                $method.html(femaleHTML);
+                $reject.find('.txt').after(femaleHTML);
+            }
+            
+            $method.addClass('active');
         });
 
 
-        $('[data-video]').on('click', function(){
+        $sex.on('click', '[data-video]', function(){
             var $this = $(this);
-            var $btnvideo = $this.parents('.section').find('.btn-video');
             var src = $this.data('video');
-            var $thisBgvideo = $this.parents('.section').find('.bg-video');
-            $this.parents('.section').children('.videoarea').addClass('active').siblings('.page').removeClass('active');
-            // $btnvideo.attr('src', 'media/'+src);
+            var poster = $this.data('poster');
+            $videoarea.addClass('active').siblings('.page').removeClass('active');
             $btnvideo[0].src = 'media/' +src;
-            $btnvideo[0].poster = 'img/f-reject.jpg';
+            $btnvideo[0].poster = 'img/' +poster;
+            $bgvideo.css('display', 'none');
+            $btnvideo.css('display', 'block');
             $btnvideo[0].play();
-            $thisBgvideo[0].pause();
+            $bgvideo[0].pause();
 
             var text = $this.text();
-            var $reject = $this.parents('.section').children('.reject');
             var $btns = $reject.children('.btn');
             $btns.each(function(index, el){
                 if($(el).text() == text){
@@ -175,21 +140,24 @@ var processor = {
 
             $btnvideo.on('ended', function(){
                 $reject.addClass('active').siblings('.pages').removeClass('active');
+                $btnvideo.css('display', 'none');
             })
-        })
+        });
 
         //放大招相关
-        $('.btn-dazhao').on('click', function(){
-            var origin = $(this).parents('.section').attr('id');
+        $dazhao.on('click', function(){
             $('#dazhao').addClass('active');
-            $('#dazhao .btn-jixu').attr('data-origin', origin);
-        })
+            $btnvideo.css('display', 'none');
+        });
+        //继续支招
         $('#dazhao .btn-jixu').on('click', function(){
-            var origin = $(this).data('origin');
             $('#dazhao').removeClass('active');
-            $('#'+origin).children('.page').removeClass('active');
-            $('#'+origin).children('.method, .bgvideo').addClass('active');
-        })
+            $sex.children('.page').removeClass('active');
+            $sex.children('.bgvideo').addClass('active');
+            $method.addClass('active');
+            $bgvideo.css('display', 'block');
+            $bgvideo[0].play();
+        });
     },
     initMusic: function(url){
         var options = {

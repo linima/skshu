@@ -43,6 +43,10 @@ img{
     opacity: 1;
     z-index: 2;
 }
+.draw{
+    transform: scale(.9);
+    -webkit-transform: scale(.9);
+}
 .draw .title{
     margin-top: 5%;
     width: 679px;

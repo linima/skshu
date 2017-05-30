@@ -67,6 +67,7 @@ img{
     display: -webkit-flex;
     opacity: 0;
     visibility: hidden;
+    overflow: hidden;
     z-index: -99;
     transition: all .6s;
 }
@@ -107,10 +108,10 @@ img{
 .btn-heianliaoli{
     background-position: 0 -660px;
 }
-.btn-zhizhaoher{
+.female .btn-zhizhao{
     background-position: 0 -770px;
 }
-.btn-zhizhaohe{
+.male .btn-zhizhao{
     background-position: 0 -880px;
 }
 .btn-dazhao{
@@ -178,17 +179,18 @@ img{
 .bg-video,
 .btn-video{
     position: absolute;
+    left: 0;
     bottom: 0;
     width: 750px;
     height: 1220px;
 }
 
-.f-question{
+.female .question{
     width: 624px;
     height: 252px;
     background: url(../img/f-question.png) no-repeat;
 }
-.m-question{
+.male .question{
     width: 675px;
     height: 224px;
     background: url(../img/m-question.png) no-repeat;
